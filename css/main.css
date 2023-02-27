@@ -1,0 +1,318 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vw + 1vh);
+    --text: #e7e7e0;
+    --transition: transform .75s cubic-bezier(0.075, 0.5, 0.0, 1);
+}
+
+@font-face {
+    font-family: raleway_f;
+    src: url(../fonts/raleway-regular.woff2);
+}
+
+@font-face {
+    font-family: raleway_f;
+    src: url(../fonts/raleway-black.woff2);
+    font-weight: 900;
+}
+
+body {
+    background-color: #0f2032;
+    font-family: raleway_f, sans-serif;
+    line-height: 1.55;
+    font-size: calc(var(--index) * 0.7);
+}
+
+.main-header {
+    position: relative;
+}
+
+.main-header::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: calc(var(--index) * 10);
+    background-image: url(../img/ground.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    bottom: calc(var(--index) * -4.5);
+}
+
+.layers {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.layer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.main-article {
+    --main-article-transform: translate3d(0, calc(var(--scrollTop) / -12), 0);
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+    background-color: #0f2032;
+    margin-top: 10%;
+    margin-bottom: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.layers__base {
+    transform: translate3d(0, calc(var(--scrollTop) / 1.6), 0);
+    z-index: 0;
+    transition: var(--transition);
+}
+
+.layers__middle {
+    transform: translate3d(0, calc(var(--scrollTop) / 2.5), 0);
+    transition: var(--transition);
+}
+
+.layers__front {
+    transform: translate3d(0, calc(var(--scrollTop) / 5.7), 0);
+    transition: var(--transition);
+}
+
+.layer__header {
+    z-index: 1;
+    transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
+    will-change: transform;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--text);
+    text-shadow: 0 0 15px #194057;
+    transition: var(--transition);
+}
+
+.layers__title {
+    font-size: calc(var(--index) * 2.5);
+    letter-spacing: calc(var(--index) / 2.25);
+}
+
+.layers__caption {
+    font-size: calc(var(--index) / 1.175);
+    letter-spacing: calc(var(--index) / 3.5);
+    margin-top: calc(var(--index) * -.75);
+    color: var(--text);
+}
+
+.main-article__header {
+    z-index: 4;
+    text-transform: uppercase;
+    font-size: calc(var(--index) * 1.8);
+    letter-spacing: calc(var(--index) / 7.5);
+    transform: var(--main-article-transform);
+    will-change: transform;
+    transition: var(--transition);
+    position: relative;
+}
+
+.main-article__paragraph {
+    max-width: calc(var(--index) * 31);
+    font-size: calc(var(--index) * 0.8);
+    margin-top: calc(var(--index) / 1.25);
+    transform: var(--main-article-transform);
+    will-change: transform;
+    transition: var(--transition);
+}
+
+.content {
+    will-change: transform;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.block {
+    font-size: calc(var(--index) * 0.7);
+    background: #0b344d;
+    text-align: left;
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 10%;
+}
+
+.block:hover {
+    background: #194057;
+}
+
+table {
+    font-size: calc(var(--index) * 0.7);
+    border-collapse: separate;
+    border-spacing: 5px;
+    background: #092a3e;
+    border-radius: 8px;
+}
+
+th {
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    background: #0b344d;
+    padding: 10px;
+    text-align: center;
+    width: auto
+}
+
+.last-column {
+    text-align: left;
+    padding: 30px;
+}
+
+tr:hover td {
+    background: #194057;
+}
+
+a, a:visited{
+    color: #e7e7e0;
+}
+
+.game_container {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    width: 180px;
+    margin-left:auto;
+  margin-right:auto;
+  margin-bottom: 10%;
+}
+  
+#game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: aliceblue;
+    color:#194057;
+    border-radius: 8px;
+}
+  
+#game div {
+    width: 60px;
+    height: 60px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+#game div span {
+    font-size: 50px;
+}
+
+.glow-on-hover {
+    width: 160px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #194057;
+    cursor: pointer;
+    position: relative;
+    border-radius: 10px;
+    z-index: 0;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #fff;
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #194057;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@media screen and (min-width: 400px) and (max-width: 550px){
+    table {
+      width: 380px;
+    }
+
+    th {
+        padding: 3px;
+    }
+    
+    td {
+        padding: 3px;
+    }
+
+    .last-column {
+        padding: 3px;
+    }
+
+    .block {
+        padding: 20px;
+        width: 380px;
+    }
+}
